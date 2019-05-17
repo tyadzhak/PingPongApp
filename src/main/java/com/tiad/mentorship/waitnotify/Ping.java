@@ -18,12 +18,13 @@ public class Ping implements Runnable {
             while(sc.hasNext()){
                 String next = sc.next();
 
-                if (next.equalsIgnoreCase(EXIT_STRING))
+                if (next.equalsIgnoreCase(EXIT_STRING)) {
                     System.exit(0);
+                }
 
-                if (!next.equalsIgnoreCase(PING_STRING))
+                if (!next.equalsIgnoreCase(PING_STRING)) {
                     continue;
-
+                }
 
                 Lock.lock.notifyAll();
                 app.setWakeUp(true);

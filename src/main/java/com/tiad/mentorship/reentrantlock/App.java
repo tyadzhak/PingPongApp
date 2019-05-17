@@ -1,35 +1,33 @@
 package com.tiad.mentorship.reentrantlock;
 
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class App {
 
-    public static final ReentrantLock locker = new ReentrantLock();
+    public static final Lock lock = new ReentrantLock();
+    public static final Condition pingCondition = lock.newCondition();
+    public static final Condition pongCondition = lock.newCondition();
 
     public static void main(String[] args) {
         App app = new App();
         app.play();
     }
 
-    private AtomicBoolean wakeUp = new AtomicBoolean(false);
-
     private void play() {
-        Thread ping = new Thread(new Ping(this));
+        Thread ping = new Thread(new Ping());
         ping.setName("pingThread");
 
-        Thread pong = new Thread(new Pong(this));
+        Thread pong = new Thread(new Pong());
         pong.setName("pongThread");
 
         ping.start();
         pong.start();
-    }
-
-    public boolean getWakeUp() {
-        return wakeUp.get();
-    }
-
-    public void setWakeUp(boolean wakeUp) {
-        this.wakeUp.set(wakeUp);
+/*
+        Thread ping = new Thread(new Worker());
+        Thread pong = new Thread(new Worker());
+        ping.start();
+        pong.start();*/
     }
 }

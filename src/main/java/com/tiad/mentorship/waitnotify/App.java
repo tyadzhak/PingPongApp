@@ -12,12 +12,17 @@ public class App {
     private AtomicBoolean wakeUp = new AtomicBoolean(false);
 
     private void play() {
-        Thread ping = new Thread(new Ping(this));
+        /*Thread ping = new Thread(new Ping(this));
         ping.setName("pingThread");
 
         Thread pong = new Thread(new Pong(this));
         pong.setName("pongThread");
 
+        ping.start();
+        pong.start();*/
+
+        Thread ping = new Thread(new Worker());
+        Thread pong = new Thread(new Worker());
         ping.start();
         pong.start();
     }
@@ -26,7 +31,7 @@ public class App {
         return wakeUp.get();
     }
 
-    public void setWakeUp(boolean wakeUp) {
-        this.wakeUp.set(wakeUp);
+    public void setWakeUp(final boolean wakeup) {
+        this.wakeUp.set(wakeup);
     }
 }

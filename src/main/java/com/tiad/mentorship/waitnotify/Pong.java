@@ -12,7 +12,7 @@ public class Pong implements Runnable {
     @Override
     public void run() {
         synchronized (Lock.lock) {
-            while(true) {
+            while (true) {
                 if (!app.getWakeUp()) {
                     try {
                         Lock.lock.wait();
