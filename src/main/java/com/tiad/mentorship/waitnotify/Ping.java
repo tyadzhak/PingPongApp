@@ -13,7 +13,7 @@ public class Ping implements Runnable {
 
     @Override
     public void run() {
-        synchronized (Lock.lock) {
+        synchronized (Lock.pingLock) {
             Scanner sc = new Scanner(System.in);
             while(sc.hasNext()){
                 String next = sc.next();
@@ -26,10 +26,11 @@ public class Ping implements Runnable {
                     continue;
                 }
 
-                Lock.lock.notifyAll();
-                app.setWakeUp(true);
+                synchronized (Lock.pongLock) {
+                    Lock.pongLock.notifyAll();
+                }
                 try {
-                    Lock.lock.wait();
+                    Lock.pingLock.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

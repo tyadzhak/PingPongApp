@@ -3,6 +3,7 @@ package com.tiad.mentorship.reentrantlock;
 import java.util.Scanner;
 import java.util.concurrent.locks.Condition;
 
+@Deprecated
 public class Worker implements Runnable {
     private static final String PING_STRING = "ping";
     private static final String PONG_STRING = "pong";

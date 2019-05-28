@@ -17,9 +17,5 @@ public class Pong implements Runnable {
                 App.lock.unlock();
             }
         }
-
-
     }
-
-
 }

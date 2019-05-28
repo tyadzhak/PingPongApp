@@ -2,6 +2,7 @@ package com.tiad.mentorship.waitnotify;
 
 import java.util.Scanner;
 
+@Deprecated
 public class Worker implements Runnable {
     private static final String PING_STRING = "ping";
     private static final String PONG_STRING = "pong";
