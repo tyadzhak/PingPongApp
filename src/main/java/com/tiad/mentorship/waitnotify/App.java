@@ -1,5 +1,6 @@
 package com.tiad.mentorship.waitnotify;
 
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.Exchanger;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -11,23 +12,26 @@ public class App {
     }
 
     private void play() {
-/*        Thread ping = new Thread(new Ping(this));
+/*        ArrayBlockingQueue  queue = new ArrayBlockingQueue(100);
+        Thread ping = new Thread(new Ping( queue));
         ping.setName("pingThread");
 
-        Thread pong = new Thread(new Pong(this));
-        pong.setName("pongThread");
-
-        ping.start();
-        pong.start();*/
-
-        Exchanger<String> exchanger = new Exchanger<>();
-        Thread ping = new Thread(new PingV2(exchanger));
-        ping.setName("pingThread");
-
-        Thread pong = new Thread(new PongV2(exchanger));
+        Thread pong = new Thread(new Pong(queue));
         pong.setName("pongThread");
 
         ping.start();
         pong.start();
+*/
+
+
+        Exchanger<String> exchanger = new Exchanger<>();
+        Thread pingv2 = new Thread(new PingV2(exchanger));
+        pingv2.setName("pingThread");
+
+        Thread pongv2 = new Thread(new PongV2(exchanger));
+        pongv2.setName("pongThread");
+
+        pingv2.start();
+        pongv2.start();
     }
 }
