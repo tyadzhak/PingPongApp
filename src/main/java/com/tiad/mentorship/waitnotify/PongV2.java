@@ -3,7 +3,6 @@ package com.tiad.mentorship.waitnotify;
 import java.util.concurrent.Exchanger;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class PongV2 implements Runnable {
     private static final String PONG_STRING = "pong";
