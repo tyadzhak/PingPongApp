@@ -30,7 +30,7 @@ public class Ping implements Runnable {
                     Lock.pongLock.notifyAll();
                 }
                 try {
-                    Lock.pingLock.wait();
+                    Lock.pingLock.wait(50000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

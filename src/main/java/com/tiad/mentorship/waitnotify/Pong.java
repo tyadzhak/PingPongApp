@@ -1,6 +1,7 @@
 package com.tiad.mentorship.waitnotify;
 
-public class Pong implements Runnable {
+public class Pong implements Runnable
+{
     private static final String PONG_STRING = "pong";
 
     private App app;
@@ -14,7 +15,7 @@ public class Pong implements Runnable {
         synchronized (Lock.pongLock) {
             while (true) {
                 try {
-                    Lock.pongLock.wait();
+                    Lock.pongLock.wait(50000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -26,3 +27,4 @@ public class Pong implements Runnable {
         }
     }
 }
+

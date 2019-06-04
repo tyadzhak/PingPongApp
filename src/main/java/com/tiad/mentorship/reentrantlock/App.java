@@ -24,10 +24,5 @@ public class App {
 
         ping.start();
         pong.start();
-/*
-        Thread ping = new Thread(new Worker());
-        Thread pong = new Thread(new Worker());
-        ping.start();
-        pong.start();*/
     }
 }
