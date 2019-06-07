@@ -1,8 +1,9 @@
 package com.tiad.mentorship.waitnotify;
 
-import java.util.concurrent.ArrayBlockingQueue;
+import com.tiad.mentorship.waitnotify.v2.PingV2;
+import com.tiad.mentorship.waitnotify.v2.PongV2;
+
 import java.util.concurrent.Exchanger;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class App {
 

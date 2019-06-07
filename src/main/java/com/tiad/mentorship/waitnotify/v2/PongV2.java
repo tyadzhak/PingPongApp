@@ -1,4 +1,4 @@
-package com.tiad.mentorship.waitnotify;
+package com.tiad.mentorship.waitnotify.v2;
 
 import java.util.concurrent.Exchanger;
 import java.util.concurrent.TimeUnit;
